@@ -1,0 +1,41 @@
+apply plugin: "java"
+
+sourceCompatibility = 1.8
+sourceSets.main.java.srcDirs = ["src"]
+
+repositories {
+    mavenCentral()
+    maven {
+        url 'https://www.jitpack.io'
+    }
+}
+
+ext {
+    arcVersion = 'v126'
+    mindustryVersion = 'v126'
+    pluginVersion = '0.1.0'
+}
+
+dependencies {
+    compileOnly "com.github.Anuken.Arc:arc-core:$arcVersion"
+    compileOnly "com.github.Anuken.Mindustry:core:$arcVersion"
+    //compileOnly "com.github.ObvilionNetwork.mindustry-server:core:$mindustryVersion"
+    //compileOnly "com.github.ObvilionNetwork.mindustry-server:server:$mindustryVersion"
+
+    implementation 'org.beykery:neuroph:2.92'
+}
+
+jar {
+    archiveFileName = "${project.archivesBaseName}-${pluginVersion}.jar"
+    from {
+        configurations.runtimeClasspath.collect{it.isDirectory() ? it : zipTree(it)}
+    }
+
+    from('src/resources') {
+        include "**"
+    }
+
+    from(rootDir) {
+        include "LICENSE"
+    }
+}

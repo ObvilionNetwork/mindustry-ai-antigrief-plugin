@@ -1,0 +1,7 @@
+{
+  "name": "ObvilionAntiGrief",
+  "author": "FatonnDev",
+  "main": "ru.obvilion.ObvilionPlugin",
+  "description": "Based on AI antigrief plugin for Mindustry",
+  "version": "0.1"
+}
